@@ -1,5 +1,6 @@
 module.exports = app => {
     const payments = require("../controllers/payment.controller.js");
+    const count = require("../controllers/count.controller.js");
   
     var router = require("express").Router();
   
@@ -11,6 +12,8 @@ module.exports = app => {
   
     // Retrieve all published Payments
     // router.get("/published", payments.findAllPublished);
+
+    router.get("/order/count", count.findAll);
   
     // Retrieve a single Payment with id
     router.get("/:id", payments.findOne);

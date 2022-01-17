@@ -71,6 +71,21 @@ Payment.getAll = (name, result) => {
   });
 };
 
+Payment.countAll = (result) => {
+  let query = "SELECT COUNT(id) AS orderCount FROM payments";
+
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("payments: ", res);
+    result(null, res);
+  });
+};
+
 Payment.getAllPublished = result => {
   sql.query("SELECT * FROM payments WHERE published=true", (err, res) => {
     if (err) {
